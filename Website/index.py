@@ -12,7 +12,7 @@ class handler(BaseHTTPRequestHandler):
         page = urllib.request.urlopen(quote_page)
         data = page.read()
         sibling_soup = BeautifulSoup(data, 'html.parser')
-        tag = int(sibling_soup.svg.text)
+        tag = int(sibling_soup.svg.text.replace(",",""))
         self.wfile.write(str(tag).encode())
 
 
